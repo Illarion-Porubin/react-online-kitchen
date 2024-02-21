@@ -1,0 +1,45 @@
+.bg {
+    width: 100%;
+    height: 30px;
+    background-color: #ffdb63;
+}
+
+.header {
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .menu {
+        width: 341px;
+        height: 32px;
+    }
+    
+    .list {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .item {
+        width: auto;
+    }
+    
+    .link {
+        font-size: 26px;
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+        font-family: Inkfree;
+    }
+}
+
+
+
+
+

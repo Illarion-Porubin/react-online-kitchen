@@ -1,0 +1,61 @@
+.recipe {
+    max-width: 407px;
+    max-height: 473px;
+    border-radius: 33px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    .picture {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 33px;
+        z-index: 3;
+    }
+
+    &:hover {
+        .content {
+            position: absolute;
+            top: 48%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #f5f2f2;
+            padding-left: 38px;
+            z-index: 1;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+    }
+
+    .content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f5f2f2;
+        padding-left: 38px;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .description {
+        position: absolute;
+        bottom: 40px;
+    }
+
+    .btn {
+        border-radius: 32px;
+        padding: 9px 33px;
+        width: 177px;
+        height: 43px;
+        background-color: #FFDB63;
+        color: #000;
+        border: none;
+        cursor: pointer;
+    }
+}

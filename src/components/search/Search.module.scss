@@ -1,12 +1,33 @@
 .search {
+    position: relative;
     min-width: 258px;
     height: auto;
     bottom: 15px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
     padding: 0 15px;
     z-index: 1;
+    left: -26px;
+    margin-top: 20px;
+    display: flex;
+
+    .searchBtn{
+        background-color: transparent;
+        border: none;
+        width: 100px;
+        color: #fff;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        &::after{
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            right: 8px;
+            bottom: 6px;
+            background-color: #fff;
+        }
+    }
 
     .input {
         width: 100%;

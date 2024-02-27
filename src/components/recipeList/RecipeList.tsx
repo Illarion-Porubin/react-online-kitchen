@@ -8,15 +8,15 @@ export const RecipeList: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
 
   // console.log(data.recipeList.meals[0], 'selectRecipeData');
-  console.log(data.isLoading);
+  console.log(data.recipeList);
 
   return (
     <div className="container">
       <section className={s.recipeList}>
         <h2>All the recipes</h2>
         <div className={s.content}>
-          {data.isLoading === "loaded"
-            ? data.recipeList.meals.map((item: any, id: string) => (
+          {data.isLoading === "loaded" && data.recipeList.length > 0
+            ? data.recipeList.map((item: any, id: string) => (
                 <Recipe item={item} key={id} />
               ))
             : null}

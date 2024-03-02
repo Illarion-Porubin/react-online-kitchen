@@ -53,9 +53,36 @@
         padding: 9px 33px;
         width: 177px;
         height: 43px;
-        background-color: #FFDB63;
-        color: #000;
+        background-color: #fe4f1e;
+        color: #fff;
         border: none;
         cursor: pointer;
+    }
+
+    .buttons{
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        transition: all 1.3s;
+    }
+
+   
+
+    .heart,
+    .trash{
+        border: none;
+        background-color: transparent;
+        margin-left: 10px;
+        cursor: pointer;
+        :hover{
+            animation: shaking 1s;
+        }
+    }
+
+    @keyframes shaking {
+        0%   {transform: rotate(0deg)}
+        25%   {transform: rotate(30deg)}
+        75%  {transform: rotate(-30deg)}
+        100% {transform: rotate(0deg)}
     }
 }

@@ -10,22 +10,25 @@
     margin-top: 20px;
     display: flex;
 
-    .searchBtn{
+    .searchAttribute {
+        color: #fff;
+    }
+
+    .searchBtn {
+        text-transform: uppercase;
         background-color: transparent;
         border: none;
-        width: 100px;
+        width: 150px;
         color: #fff;
         display: inline-block;
         position: relative;
         cursor: pointer;
-        &::after{
-            content: "";
-            position: absolute;
-            width: 60px;
-            height: 2px;
-            right: 8px;
-            bottom: 6px;
-            background-color: #fff;
+        transition: all 0.3s;
+        &:hover {
+            .searchAttribute {
+                transition: all 0.3s;
+                color: #fe4f1e;
+            }
         }
     }
 
@@ -34,25 +37,24 @@
         height: 45px;
         border-radius: 33px;
         background-color: transparent;
-        border: 2px solid #FFDB63;
+        border: 2px solid #fe4f1e;
         color: #fff;
         padding: 0 15px;
     }
 
-    .input:focus {outline: none;}
-    .input::placeholder{
+    .input:focus {
+        outline: none;
+    }
+    .input::placeholder {
         color: #ffffff;
         padding: 0 15px;
     }
-
 }
-
 
 @media (max-width: 680px) {
     .search {
-     .input{
-        width: 100%;
-     }
+        .input {
+            width: 100%;
+        }
     }
 }
-

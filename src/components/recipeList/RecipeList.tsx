@@ -3,7 +3,7 @@ import s from "./RecipeList.module.scss";
 import { useCustomSelector } from "../../hooks/store";
 import { selectRecipeData } from "../../redux/selectors";
 import { Recipe } from "../recipe/Recipe";
-import ReactPaginate from "react-paginate";
+import { Pagination } from "../pagination/Pagination";
 
 export const RecipeList: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
@@ -16,12 +16,7 @@ export const RecipeList: React.FC = () => {
   const dataValue = data.recipeList.slice(minItems, maxItems);
   //
 
-  const handlePageClick = (e: {selected: number}) => {
-    console.log(e);
-    setCurrentPage(e.selected);
-  };
-
-
+  console.log(data.recipeList, 'data.recipeList');
 
   return (
     <div className="container">
@@ -34,15 +29,7 @@ export const RecipeList: React.FC = () => {
               ))
             : null}
         </div>
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={items}
-          pageCount={allPages}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-        />
+        <Pagination allPages={allPages} items={items} setCurrentPage={setCurrentPage}/>
       </section>
     </div>
   );

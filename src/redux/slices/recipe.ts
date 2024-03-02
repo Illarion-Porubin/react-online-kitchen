@@ -5,12 +5,11 @@ import axios from "axios";
 export const fetchFindByName = createAsyncThunk<any, string, { rejectValue: string }
 >("api/findByName", async (search: string, { rejectWithValue }) => {
     if(search){
-        console.log(search, 'search');
         const {data} = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
         if(!data){
             rejectWithValue("error fetchFindByName")
         }
-        return data;
+        return data
     }
 })
 
@@ -21,7 +20,7 @@ export const fetchFindByLetter = createAsyncThunk<any, string, { rejectValue: st
         if(!data){
             rejectWithValue("error fetchFindByLetter")
         }
-        return data;
+        return data
     }
 })
 
@@ -42,7 +41,11 @@ const initialState: State = {
 export const recipeSlice = createSlice({
     name: 'recipe',
     initialState,
-    reducers: {},
+    reducers: {
+        clearState: (state) => {
+            state.recipeList = []
+        },
+    },
     extraReducers: (builder) => (
         builder
         ///fetchFindByName
@@ -51,7 +54,7 @@ export const recipeSlice = createSlice({
             state.isLoading = "loading";
         })
         .addCase(fetchFindByName.fulfilled, (state, action) => {
-            state.recipeList = action.payload.meals;
+            state.recipeList = Array.isArray(action.payload.meals) ? action.payload.meals : [];
             state.isLoading = "loaded";
         })
         .addCase(fetchFindByName.rejected, (state) => {
@@ -64,7 +67,6 @@ export const recipeSlice = createSlice({
             state.isLoading = "loading";
         })
         .addCase(fetchFindByLetter.fulfilled, (state, action) => {
-            console.log(action.payload.meals, 'action.payload');
             state.recipeList = Array.isArray(action.payload.meals) ? action.payload.meals : [];
             state.isLoading = "loaded";
         })

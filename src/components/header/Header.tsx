@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Header.module.scss";
 import logo from "../../assets/svg/logo.svg";
+import { Link } from "react-router-dom";
 
 export const Header: React.FC = () => {
   return (
@@ -17,9 +18,7 @@ export const Header: React.FC = () => {
                 </a>
               </li>
               <li className={s.item}>
-                <a className={s.link} href="#">
-                  themealdb
-                </a>
+                <Link className={s.link} to="/favorite">favorite</Link>
               </li>
               <li className={s.item}>
                 <a className={s.link} href="#">

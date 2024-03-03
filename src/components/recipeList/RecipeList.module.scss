@@ -1,7 +1,13 @@
-.recipeList{
-    .content{
+.recipeList {
+    .title {
+        font-family: var(--second-family);
+        font-weight: 400;
+        font-size: 38px;
+        color: var(--neutral-800);
+        font-family: Inkfree;
+    }
+    .content {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 }

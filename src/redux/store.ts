@@ -1,23 +1,46 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import recipeSlice from './slices/recipe';
+import favoriteSlice from './slices/favorite';
+import storage from 'redux-persist/lib/storage';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 
 export const rootReducer = combineReducers({
-    recipeSlice 
+    recipeSlice,
+    favoriteSlice 
   });
 
-const store = configureStore({
-    reducer: {
-        recipeSlice
-      },
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['favoriteSlice'],
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 })
 
-export const useAppDispatch: () => AppDispatch = useDispatch // Export a hook that can be reused to resolve types
+export const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppState = ReturnType<typeof store.getState>;
 export type AppStore = typeof store;
 export type AppDispath = AppStore['dispatch'];
-
-export default store;

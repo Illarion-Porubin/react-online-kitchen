@@ -1,56 +1,65 @@
-.test {
+
+.bg {
+    width: 100%;
+    height: 362px;
+    position: absolute;
+    opacity: 0.7;
+    z-index: 3;
+}
+
+.swiper{
+    width: 100%;
+    height: 362px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../assets//jpg/billboard.jpg");
+    text-align: center;
+}
+
+.quotes{
+    position: absolute;
+    top: calc(50% + -60px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 5;
+    color: #fff;
+    color: #fff;
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.sliderSearch{
+    position: absolute;
+    top: 60%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: 400px;
+    z-index: 5;
+}
+
+
+
+.slider {
+    text-align: left;
+    &__bg {
+        width: 100%;
+        height: 362px;
+        position: relative;
+        background-color: #000;
+        z-index: 3;
+    }
+
     &__img {
         width: 100%;
         height: 362px;
         object-fit: cover;
-    }
-   
-}
-
-
-.billboard {
-    width: 100%;
-    height: 362px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url("../../assets//jpg/billboard.jpg");
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    margin-bottom: 100px;
-
-    .bg {
-        width: 100%;
-        height: 362px;
         position: absolute;
-        background-color: #000;
-        opacity: 0.7;
-        z-index: 3;
-    }
-
-    .content {
-        position: relative;
-        z-index: 4;
-        display: flex;
-        flex-direction: column;
-        max-width: 540px;
-        height: auto;
-    }
-
-    .quotes {
-        // font-family: Inter;
-        color: #fff;
-        text-align: center;
-        font-style: italic;
-        font-weight: 400;
-        font-size: 18px;
-    }
-
-    .author {
-        font-style: italic;
-        font-weight: 200;
-        font-size: 16px;
     }
 }

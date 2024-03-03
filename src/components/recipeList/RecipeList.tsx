@@ -16,20 +16,26 @@ export const RecipeList: React.FC = () => {
   const dataValue = data.recipeList.slice(minItems, maxItems);
   //
 
-  console.log(data.recipeList, 'data.recipeList');
+  console.log(data.recipeList, "data.recipeList");
 
   return (
     <div className="container">
       <section className={s.recipeList}>
-        <h2>All the recipes</h2>
-        <div className={s.content}>
-          {data.isLoading === "loaded" && data.recipeList.length > 0
-            ? dataValue.map((item: any, id: string) => (
+        {data.isLoading === "loaded" && data.recipeList.length > 0 ? (
+          <>
+            <h2 className={s.title}>All the recipes</h2>
+            <div className={s.content}>
+              {dataValue.map((item: any, id: string) => (
                 <Recipe item={item} key={id} />
-              ))
-            : null}
-        </div>
-        <Pagination allPages={allPages} items={items} setCurrentPage={setCurrentPage}/>
+              ))}
+            </div>
+          </>
+        ) : null}
+        <Pagination
+          allPages={allPages}
+          items={items}
+          setCurrentPage={setCurrentPage}
+        />
       </section>
     </div>
   );

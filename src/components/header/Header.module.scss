@@ -7,28 +7,28 @@
 .header {
     width: 100%;
     height: auto;
-    margin-bottom: 50px;
 
     .content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 11px 0;
     }
-    
+
     .menu {
         width: 341px;
         height: 32px;
     }
-    
+
     .list {
         display: flex;
         justify-content: space-between;
     }
-    
+
     .item {
         width: auto;
     }
-    
+
     .link {
         font-size: 26px;
         text-transform: capitalize;
@@ -36,10 +36,11 @@
         font-size: 26px;
         text-align: center;
         font-family: Inkfree;
+        color: #000;
+        transition: all .3s;
+        &:hover{
+            color: #fe4f1e;
+            transition: all .3s;
+        }
     }
 }
-
-
-
-
-

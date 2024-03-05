@@ -13,9 +13,9 @@ export const Header: React.FC = () => {
           <nav className={s.menu}>
             <ul className={s.list}>
               <li className={s.item}>
-                <a className={s.link} href="#">
+                <Link className={s.link} to="/">
                   home
-                </a>
+                </Link>
               </li>
               <li className={s.item}>
                 <Link className={s.link} to="/favorite">favorite</Link>

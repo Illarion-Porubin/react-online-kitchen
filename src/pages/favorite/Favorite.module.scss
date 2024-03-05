@@ -1,0 +1,38 @@
+.search{
+    width: 260px;
+}
+
+.content{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #fe4f1e;
+    border-radius: 33px;
+    padding: 10px;
+}
+
+.picture{
+    width: 260px;
+    height: 260px;
+    border-radius: 33px;
+}
+
+.textContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons{
+    display: flex;
+    width: 544px;
+    height: auto;
+    justify-content: space-between;
+}

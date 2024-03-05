@@ -2,6 +2,8 @@ import React from "react";
 import s from "./Recipe.module.scss";
 import heart from "../../assets/svg/heart.svg";
 import trash from "../../assets/svg/trash.svg";
+import { Link } from "react-router-dom";
+import { CustomButton } from "../customButton/CustomButton";
 
 // import arabita from "../../assets/jpg/ustsqw1468250014.jpg";
 
@@ -18,7 +20,7 @@ export const Recipe: React.FC<Props> = ({ item }) => {
     <div className={s.recipe}>
       <img className={s.picture} src={item.strMealThumb} alt="picture" />
       <div className={s.content}>
-          <div className={s.buttons}>
+          <div className={s.buttonIcons}>
             <button className={s.heart}>
               <img src={heart} alt="heart" />
             </button>
@@ -31,7 +33,9 @@ export const Recipe: React.FC<Props> = ({ item }) => {
           <p className={s.title}>{item.strArea} food</p>
           <p className={s.title}>{item.strCategory}</p>
           {/* <a className={s.text} href={item.strYoutube}>YouTube</a> */}
-          <button className={s.btn}>Смотреть</button>
+          <Link to={`/recipe/${item.idMeal}`}>
+            <CustomButton text="Смотреть"/>
+          </Link>
         </article>
       </div>
     </div>

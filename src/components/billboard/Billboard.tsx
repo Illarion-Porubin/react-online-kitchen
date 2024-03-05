@@ -19,6 +19,7 @@ export const Billboard: React.FC = () => {
     <>
       <div className={s.bg} style={ data.recipeList > 0 ? { backgroundColor: "transparent"} : { backgroundColor: "#000"}}></div>
       <div className={s.swiper}>
+        
         <Swiper
           modules={[EffectFade, Autoplay]}
           effect="fade"
@@ -48,7 +49,7 @@ export const Billboard: React.FC = () => {
             <cite className={s.author}>— Jamie Oliver</cite>
           </blockquote>
           <div className={s.sliderSearch}>
-            <Search />
+            <Search mainColor="white"/>
           </div>
         </div>
       </div>

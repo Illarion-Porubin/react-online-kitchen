@@ -1,0 +1,91 @@
+.bg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #000;
+   opacity: 0.7;
+}
+.billboard {
+   width: 100%;
+   height: 362px;
+   position: relative;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.billboardContent {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.billboardTitle {
+   color: #fff;
+   font-size: 38px;
+}
+
+.recipeTitle{
+   font-size: 28px;
+   color: #000;
+}
+
+.ytBtn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: transparent;
+   border-radius: 33px;
+   border: 1px solid #fff;
+   width: 220px;
+   height: 50px;
+   font-size: 26px;
+   font-weight: bold;
+   font-family: Inter;
+   color: #fff;
+   transition: all 0.3s;
+   cursor: pointer;
+   &:hover {
+      border: 1px solid #fe4f1e;
+      transition: all 0.3s;
+      .ytIcon{
+         animation: test 1s;
+      }
+   }
+}
+
+.ytIcon {
+   position: relative;
+   width: 40px;
+   height: 40px;
+   left: 10px;
+}
+
+@keyframes test {
+   0% {left: 10px}
+   50% {left: 20px}
+   100% {left: 10px}
+}
+
+////////////
+.recipe {
+   width: 100%;
+}
+
+.content {
+   display: flex;
+   margin-bottom: 80px;
+}
+
+.recipeText {
+   font-size: 22px;
+   margin-bottom: 10px;
+   list-style: auto !important;
+}
+

@@ -1,42 +1,15 @@
 import React from "react";
 import s from "./Search.module.scss";
-import { useCustomDispatch } from "../../hooks/store";
-import {
-  fetchFindByLetter,
-  fetchFindByName,
-  recipeSlice,
-} from "../../redux/slices/recipe";
-import { useDebounce } from "../../hooks/useDebounce";
+
+
 
 interface Props {
-  mainColor: "white" | "black"
+  mainColor: "white" | "black";
+  search: string;
+  setSearch: (value: string) => void
 }
 
-export const Search: React.FC<Props> = ({mainColor}) => {
-  const dispatch = useCustomDispatch();
-  const [search, setSearch] = React.useState<string>("");
-  const [searchOption, setSearchOption] = React.useState<boolean>(false);
-  const debounce = useDebounce(search, 300);
-
-  const clearSearch = () => {
-    setSearch("");
-    setTimeout(() => {
-      setSearchOption(!searchOption);
-    }, 300);
-  };
-
-  React.useEffect(() => {
-    if (debounce) {
-      if (searchOption) {
-        dispatch(fetchFindByLetter(debounce));
-      } else {
-        dispatch(fetchFindByName(debounce));
-      }
-    }
-    // else{
-    //   dispatch(recipeSlice.actions.clearState())
-    // }
-  }, [dispatch, debounce, searchOption]);
+export const Search: React.FC<Props> = ({mainColor, search, setSearch}) => {
 
   return (
     <div className={s.search}>
@@ -60,7 +33,6 @@ export const Search: React.FC<Props> = ({mainColor}) => {
         type="text"
         placeholder="Search"
         autoFocus
-        maxLength={searchOption ? 1 : undefined}
         value={search}
       />
     </div>

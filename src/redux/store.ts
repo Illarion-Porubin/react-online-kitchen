@@ -22,7 +22,7 @@ export const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['recipeSlice'],
+  whitelist: ['recipeSlice', 'favoriteSlice'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -3,31 +3,86 @@ import s from "./Favorite.module.scss";
 import { Header } from "../../components/header/Header";
 import { Search } from "../../components/search/Search";
 import { CustomButton } from "../../components/customButton/CustomButton";
-import picture from "../../assets/jpg/ustsqw1468250014.jpg";
-// import { Pagination } from "../../components/pagination/Pagination";
+import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
+import { selectFavoriteData } from "../../redux/selectors";
+import { Link } from "react-router-dom";
+import { favorite } from "../../redux/slices/favorite";
+import { Pagination } from "../../components/pagination/Pagination";
 
 export const Favorite: React.FC = () => {
+  const dispatch = useCustomDispatch();
+  const data = useCustomSelector(selectFavoriteData);
+  const [search, setSearch] = React.useState<string>("");
+
+  //////////////////////////////////////
+  const [currentPage, setCurrentPage] = React.useState<number>(0);
+  const items = 4;
+  const allPages = Math.ceil(data.favoriteList.length / items);
+  const minItems = currentPage >= 1 ? currentPage * items : currentPage;
+  const maxItems = currentPage >= 1 ? minItems + items : items;
+  const dataValue = data.favoriteList.slice(minItems, maxItems);
+  const [list, setList] = React.useState<any>([]);
+  const [visible, setVisable] = React.useState<boolean>(true);
+
+  console.log(list);
+
+  React.useEffect(() => {
+    if (search) {
+      const findRecipe = data.favoriteList.find((item: any) =>
+        item.strMeal.toLowerCase() === search.toLowerCase() ? true : false
+      );
+      if (findRecipe) {
+        setList([findRecipe]);
+        setVisable(false);
+      } else {
+        setList(dataValue);
+        setVisable(true);
+      }
+    } else {
+      setList(dataValue);
+    }
+  }, [search, currentPage]);
+
   return (
     <>
       <Header />
       <div className="container">
         <div className={s.search}>
-          <Search mainColor="black" />
+          <Search mainColor="black" search={search} setSearch={setSearch} />
         </div>
         <div className={s.content}>
-          <div className={s.item}>
-            <img className={s.picture} src={picture} alt="picture" />
-            <div className={s.textContent}>
-              <p>Waffles</p>
-              <p>American cuisine</p>
+          {list.map((item: any, id: number) => (
+            <div className={s.item} key={id}>
+              <div className={s.mainInfo}>
+                <img
+                  className={s.picture}
+                  src={item.strMealThumb}
+                  alt="picture"
+                />
+                <div className={s.textContent}>
+                  <p className={s.name}>{item.strMeal}</p>
+                  <p className={s.text}>{item.strArea}</p>
+                </div>
+              </div>
+              <div className={s.buttons}>
+                <Link to={`/recipe/${item.idMeal}`}>
+                  <CustomButton text="Смотреть" />
+                </Link>
+                <CustomButton
+                  text="Удалить"
+                  onClick={() => dispatch(favorite.actions.deleteRecipe(item))}
+                />
+              </div>
             </div>
-            <div className={s.buttons}>
-              <CustomButton text={"Смотреть"} />
-              <CustomButton text={"Удалить"} />
-            </div>
-          </div>
+          ))}
         </div>
-        {/* <Pagination/> */}
+        <div style={{ display: visible ? "block" : "none" }}>
+          <Pagination
+            allPages={allPages}
+            setCurrentPage={setCurrentPage}
+            items={items}
+          />
+        </div>
       </div>
     </>
   );

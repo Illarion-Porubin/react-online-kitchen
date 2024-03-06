@@ -8,6 +8,10 @@
     width: 100%;
     height: auto;
 
+    .logo{
+        cursor: pointer;
+    }
+
     .content {
         display: flex;
         justify-content: space-between;
@@ -41,6 +45,9 @@
         &:hover{
             color: #fe4f1e;
             transition: all .3s;
+        }
+        span{
+            color: #fe4f1e;
         }
     }
 }

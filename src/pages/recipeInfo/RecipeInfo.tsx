@@ -1,27 +1,20 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import s from "./RecipeInfo.module.scss";
-import { useCustomSelector } from "../../hooks/store";
-import { selectRecipeData } from "../../redux/selectors";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useParams } from "react-router-dom";
+import { useCustomDispatch } from "../../hooks/store";
 import { Header } from "../../components/header/Header";
+import { fetchFindRecipeById } from "../../redux/slices/recipe";
 
 export const RecipeInfo: React.FC = () => {
-  const data = useCustomSelector(selectRecipeData);
+  const dispatch = useCustomDispatch()
   const [recipe, setRecipe] = React.useState<any | null>(null);
   const { id } = useParams();
 
-  const findRecipe = () => {
-    data.recipeList.find((item) => {
-      if (item.idMeal === id) {
-        setRecipe(item);
-      }
-    });
-  };
 
   React.useEffect(() => {
-    findRecipe();
+    if(id)dispatch(fetchFindRecipeById(id)).then(data => setRecipe(data.payload.meals[0]))
   }, []);
 
   if (recipe)
@@ -30,7 +23,7 @@ export const RecipeInfo: React.FC = () => {
         <Header />
         <div
           className={s.billboard}
-          style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
+          style={{ backgroundImage: `url(${recipe.strMealThumb})`}}
         >
           <div className={s.bg}></div>
           <div className={s.billboardContent}>

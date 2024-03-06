@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
-    favoriteList: [],
+    favoriteList: any | [],
     error: string | boolean,
     isLoading: 'idle' | 'loaded' | 'loading' | 'error',
-};
+}
 
 const initialState: State = {
     favoriteList: [],
@@ -12,13 +12,26 @@ const initialState: State = {
     isLoading: 'idle',
 }
 
-const favorite = createSlice({
+export const favorite = createSlice({
     name: 'favorite',
     initialState,
-    reducers: {},
-    extraReducers: (builder) => (
-        builder
-    )
+    reducers: {
+        addRecipe: (state, action) => {
+            if(!state.favoriteList.length){
+                state.favoriteList = [...state.favoriteList, action.payload]
+            }
+            const findRecipe = state.favoriteList.find((item: any) => item.idMeal === action.payload.idMeal);
+            state.favoriteList = !findRecipe ? [...state.favoriteList, action.payload] : state.favoriteList
+        },
+
+        deleteRecipe: (state, action) => {
+            state.favoriteList.map((item: any, id: number) => {
+                if(item.idMeal === action.payload.idMeal) {
+                    return state.favoriteList.splice(id, 1)
+                }
+            });
+        },
+    }
 })
 
-export default favorite.reducer
+export default favorite.reducer;

@@ -7,16 +7,15 @@ import { Pagination } from "../pagination/Pagination";
 
 export const RecipeList: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
-  //The server did not provide API, so we implement the logic on the client
+  
+  /////The server did not provide API, so we implement the logic on the client/////
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const items = 6;
   const allPages = Math.ceil(data.recipeList.length / items);
   const minItems = currentPage >= 1 ? currentPage * items : currentPage;
   const maxItems = currentPage >= 1 ? minItems + items : items;
   const dataValue = data.recipeList.slice(minItems, maxItems);
-  //
 
-  console.log(data.recipeList, "data.recipeList");
 
   return (
     <div className="container">

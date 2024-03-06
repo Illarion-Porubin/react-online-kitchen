@@ -24,6 +24,16 @@ export const fetchFindByLetter = createAsyncThunk<any, string, { rejectValue: st
     }
 })
 
+export const fetchFindRecipeById = createAsyncThunk<any, any, {rejectValue: string}>(
+    "api/fetchFindRecipeById", async (id: string, {rejectWithValue}) => {
+        if(id){
+            const {data} = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+            return data
+        }
+        rejectWithValue("error fetchFindRecipeById")
+    }
+)
+
 
 interface State {
     recipeList: any,

@@ -1,5 +1,6 @@
 .search{
     width: 260px;
+    margin: 50px 0;
 }
 
 .content{
@@ -32,7 +33,26 @@
 
 .buttons{
     display: flex;
-    width: 544px;
+    width: 540px;
     height: auto;
     justify-content: space-between;
+    
+}
+
+.name{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.text{
+    font-size: 22px;
+    font-weight: light;
+}
+
+.mainInfo{
+    width: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
 }

@@ -1,40 +1,55 @@
 import React from "react";
 import s from "./Recipe.module.scss";
-import heart from "../../assets/svg/heart.svg";
-import trash from "../../assets/svg/trash.svg";
 import { Link } from "react-router-dom";
 import { CustomButton } from "../customButton/CustomButton";
-
-// import arabita from "../../assets/jpg/ustsqw1468250014.jpg";
-
-// interface Meal {
-//   strMealThumb: string
-// }
+import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
+import { favorite } from "../../redux/slices/favorite";
+import { selectFavoriteData } from "../../redux/selectors";
 
 interface Props {
   item: any;
 }
 
 export const Recipe: React.FC<Props> = ({ item }) => {
+  const dispatch = useCustomDispatch();
+  const data = useCustomSelector(selectFavoriteData);
+  const check = data.favoriteList.find((recipe) => recipe.idMeal === item.idMeal)
+
+
+  const checkFavorite = () => {
+    check ? dispatch(favorite.actions.deleteRecipe(item)) :  dispatch(favorite.actions.addRecipe(item))
+  }
+
   return (
     <div className={s.recipe}>
       <img className={s.picture} src={item.strMealThumb} alt="picture" />
       <div className={s.content}>
-          <div className={s.buttonIcons}>
-            <button className={s.heart}>
-              <img src={heart} alt="heart" />
-            </button>
-            <button className={s.trash}>
-              <img src={trash} alt="trash" />
-            </button>
-          </div>
+        <div className={s.buttonIcons}>
+          <button className={s.heart}>
+            <div>
+            <svg
+              className={s.iconHeart}
+              onClick={() => checkFavorite()}
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M35.7135 22.8567L23.182 35.3882C21.4246 37.1455 18.5753 37.1455 16.818 35.3882L4.28647 22.8567C-0.0526855 18.5175 -0.0526851 11.4823 4.28647 7.14317C8.62564 2.804 15.6608 2.804 20 7.14317C24.3391 2.804 31.3743 2.804 35.7135 7.14317C40.0526 11.4823 40.0526 18.5175 35.7135 22.8567Z"
+                fill={check ? "red" : "gray"}
+              />
+            </svg>
+            </div>
+          </button>
+        </div>
         <article className={s.description}>
           <h3 className={s.title}>{item.strMeal}</h3>
           <p className={s.title}>{item.strArea} food</p>
           <p className={s.title}>{item.strCategory}</p>
-          {/* <a className={s.text} href={item.strYoutube}>YouTube</a> */}
           <Link to={`/recipe/${item.idMeal}`}>
-            <CustomButton text="Смотреть"/>
+            <CustomButton text="Смотреть" />
           </Link>
         </article>
       </div>

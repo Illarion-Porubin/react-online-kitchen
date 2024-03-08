@@ -29,9 +29,9 @@ export const Header: React.FC = () => {
                 </Link>
               </li>
               <li className={s.item}>
-                <a className={s.link} href="#">
+                <Link to="/about" className={s.link}>
                   about
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

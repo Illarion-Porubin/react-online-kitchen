@@ -1,19 +1,14 @@
 import React from "react";
 import s from "./Billboard.module.scss";
 import { Search } from "../search/Search";
-
-/////////////////////////////
+////////////////////////////
 import { EffectFade, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+////////////////////////////
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { selectRecipeData } from "../../redux/selectors";
 import { useDebounce } from "../../hooks/useDebounce";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/autoplay";
 import { fetchFindByName } from "../../redux/slices/recipe";
-////////////////////////////
-
 export const Billboard: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
   const dispatch = useCustomDispatch();

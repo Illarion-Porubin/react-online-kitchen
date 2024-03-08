@@ -1,0 +1,45 @@
+.eroor{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.eroorTitle, .statusTitle{
+    font-size: 104px;
+    line-height: auto;
+    font-family: Inkfree;   
+}
+
+.eroorTitle{
+    color: black;
+    margin-bottom: 40px;
+}
+
+.statusTitle{
+    color: #fe4f1e;
+    margin: 0;
+}
+
+@media(max-width: 680px){
+    .eroorTitle, .statusTitle{
+        font-size: 82px;
+    }
+}
+
+@media(max-width: 580px){
+    .eroorTitle, .statusTitle{
+        font-size: 62px;
+    }
+}
+
+@media(max-width: 480px){
+    .eroorTitle, .statusTitle{
+        font-size: 42px;
+    }
+}
+
+@media(max-width: 380px){
+    .eroorTitle, .statusTitle{
+        font-size: 22px;
+    }
+}

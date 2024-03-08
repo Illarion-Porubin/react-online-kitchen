@@ -1,0 +1,43 @@
+.skills{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title{
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.feedback{
+    margin-right: 30px;
+}
+
+.feedback,.projects{
+    flex-direction: column;
+}
+
+.slider{
+    margin-bottom: 14px;
+}
+
+.slide{
+    width: 80px;
+    height: 80px;
+    margin-right: 90px;
+}
+
+.links{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.link {
+    display: table-row;
+    color: revert;
+}
+
+.projectText{
+    text-align: center;
+}
+

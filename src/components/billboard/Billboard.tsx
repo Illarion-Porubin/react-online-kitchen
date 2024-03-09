@@ -47,10 +47,10 @@ export const Billboard: React.FC = () => {
         </Swiper>
         <div className={s.content}>
           <blockquote
-            className={s.quotes}
+            className={s.excerpt}
             cite="https://www.quoteikon.com/real-food-doesnt-have-ingredients-real-food-is-ingredients.html"
           >
-            <p>Real Food Doesn't Have Ingredients, Real Food Is Ingredients</p>
+            <p className={s.quote}>Real Food Doesn't Have Ingredients, Real Food Is Ingredients</p>
             <cite className={s.author}>— Jamie Oliver</cite>
           </blockquote>
           <div className={s.sliderSearch}>

@@ -17,7 +17,7 @@
     text-align: center;
 }
 
-.quotes{
+.excerpt{
     position: absolute;
     top: calc(50% + -60px);
     right: 0;
@@ -25,13 +25,16 @@
     left: 0;
     margin: 0 auto;
     z-index: 5;
-    color: #fff;
-    color: #fff;
-    text-align: center;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 18px;
+    color: #fff;   
 }
+
+.quote, .author{
+    color: #fff;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 16px;
+}
+
 
 .sliderSearch{
     position: absolute;
@@ -61,5 +64,11 @@
         height: 362px;
         object-fit: cover;
         position: absolute;
+    }
+}
+
+@media(max-width: 480px) {
+    .quote, .author{
+        font-size: 14px;
     }
 }

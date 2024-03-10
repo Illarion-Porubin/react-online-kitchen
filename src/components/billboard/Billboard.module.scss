@@ -32,9 +32,16 @@
     color: #fff;
     font-style: italic;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 20px;
 }
 
+.quote{
+    padding: 0 20px;
+}
+
+.author{
+    font-size: 16px;
+}
 
 .sliderSearch{
     position: absolute;
@@ -67,8 +74,29 @@
     }
 }
 
-@media(max-width: 480px) {
+@media(max-width: 680px) {
+    .quote, .author{
+        font-size: 18px;
+    }
+    .author{
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 420px) {
+    .quote, .author{
+        font-size: 16px;
+    }
+    .author{
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 320px) {
     .quote, .author{
         font-size: 14px;
+    }
+    .author{
+        font-size: 12px;
     }
 }

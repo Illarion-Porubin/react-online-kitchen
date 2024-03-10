@@ -6,15 +6,6 @@
     position: relative;
     overflow: hidden;
     margin: 30px;
-
-    .picture {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 33px;
-        z-index: 3;
-    }
-
     &:hover {
         .content {
             position: absolute;
@@ -23,95 +14,111 @@
             right: 0;
             bottom: 0;
             background-color: #f5f2f2;
-            padding-left: 38px;
             z-index: 1;
             opacity: 1;
             transition: all 0.3s;
         }
     }
+}
 
-    .content {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #f5f2f2;
-        padding-left: 38px;
-        z-index: -1;
-        opacity: 0;
-        transition: all 0.3s;
+.title{
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 0;
+    margin: 6px 0 6px 0;
+}
+
+.text{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 33px;
+    z-index: 3;
+}
+
+
+.content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f5f2f2;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.description {
+    position: absolute;
+    left: 30px;
+    top: 0;
+}
+.look{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 30px;
+}
+
+.buttonIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all 1.3s;
+}
+
+.heart {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.iconHeart {
+    width: 40px;
+    height: 40px;
+}
+.iconHeart:hover {
+    animation: shaking 1s;
+}
+
+.skelet {
+    max-width: 400px;
+    max-height: 400px;
+    background-color: #c4c4c4;
+}
+
+.skeletContent {
+    width: 400px;
+    height: 400px;
+}
+
+@keyframes shaking {
+    0% {
+        width: 40px;
+        height: 40px;
     }
-
-    .description {
-        position: absolute;
-        bottom: 40px;
+    25% {
+        width: 44px;
+        height: 44px;
     }
-
-    .btn {
-        border-radius: 32px;
-        padding: 9px 33px;
-        width: 177px;
-        height: 43px;
-        background-color: #fe4f1e;
-        color: #fff;
-        border: none;
-        cursor: pointer;
+    50% {
+        width: 40px;
+        height: 40px;
     }
-
-    .buttonIcons {
-        position: absolute;
-        top: 10px;
-        right: 8px;
-        transition: all 1.3s;
+    75% {
+        width: 44px;
+        height: 44px;
     }
-
-    .heart {
-        border: none;
-        background-color: transparent;
-        margin-left: 10px;
-        cursor: pointer;
-        .iconHeart {
-            width: 40px;
-            height: 40px;
-        }
-        .iconHeart:hover {
-            animation: shaking 1s;
-        }
-    }
-
-    .skelet {
-        max-width: 400px;
-        max-height: 400px;
-        background-color: #c4c4c4;
-    }
-
-    .skeletContent {
-        width: 400px;
-        height: 400px;
-    }
-
-    @keyframes shaking {
-        0% {
-            width: 40px;
-            height: 40px;
-        }
-        25% {
-            width: 44px;
-            height: 44px;
-        }
-        50% {
-            width: 40px;
-            height: 40px;
-        }
-        75% {
-            width: 44px;
-            height: 44px;
-        }
-        100% {
-            width: 40px;
-            height: 40px;
-        }
+    100% {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -128,7 +135,37 @@
 }
 
 @media (max-width: 880px) {
+    .title{
+        font-size: 38px;
+    }
+    
     .recipe {
         max-width: 600px;
+    }
+    .iconHeart{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 440px) {
+    .title{
+        font-size: 24px;
+    }
+    .text{
+        font-size: 12px;
+    }  
+}
+
+@media (max-width: 380px) {
+    .title{
+        font-size: 18px;
+    }
+    .text{
+        font-size: 12px;
+    }  
+    .iconHeart{
+        width: 30px;
+        height: 30px;
     }
 }

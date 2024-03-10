@@ -1,8 +1,8 @@
 .btn {
     border-radius: 32px;
-    padding: 9px 33px;
     width: 200px;
     height: 40px;
+    font-size: 18px;
     color: #fe4f1e;
     transition: all 0.3s;
     border: 1px solid #fe4f1e;
@@ -12,5 +12,21 @@
         transition: all 0.3s;
         color: #fff;
         background-color: #fe4f1e;
+    }
+}
+
+@media (max-width: 380px) {
+    .btn{
+        width: 160px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 340px) {
+    .btn{
+        width: 140px;
+        height: 20px;
+        font-size: 12px;
     }
 }

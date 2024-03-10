@@ -16,6 +16,8 @@ export const Header: React.FC = () => {
     skipOnMount: true
   });
 
+  const checkWidth = !width ? window.screen.width : width; 
+  
   return (
     
     <div className={s.header} ref={ref}>
@@ -23,7 +25,7 @@ export const Header: React.FC = () => {
       <div className="container">
         <div className={s.content}>
           <Link to="/">
-            <img className={s.logo} src={ width !== undefined && width > 620 ? logo : logoMini} alt="logo" />  
+            <img className={s.logo} src={ checkWidth > 620 ? logo : logoMini} alt="logo" />  
           </Link>
           <nav className={s.menu}>
             <ul className={s.list}>

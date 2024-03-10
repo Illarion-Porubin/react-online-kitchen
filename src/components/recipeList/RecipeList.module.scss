@@ -1,14 +1,18 @@
-.recipeList {
-    .title {
-        font-family: var(--second-family);
-        font-weight: 400;
-        font-size: 38px;
-        color: var(--neutral-800);
-        font-family: Inkfree;
+.title {
+    font-weight: 400;
+    font-size: 38px;
+    color: #000;
+    font-family: Inkfree;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media(max-width: 480px){
+    .title{
+        font-size: 28px;
     }
-    .content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    
 }

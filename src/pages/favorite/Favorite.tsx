@@ -53,24 +53,30 @@ export const Favorite: React.FC = () => {
         <div className={s.content}>
           {list.map((item: any, id: number) => (
             <div className={s.item} key={id}>
-              <div className={s.mainInfo}>
+              <div className={s.pictureWrap}>
                 <img
                   className={s.picture}
                   src={item.strMealThumb}
                   alt="picture"
                 />
-                <div className={s.textContent}>
-                  <p className={s.name}>{item.strMeal}</p>
-                  <p className={s.text}>{item.strArea}</p>
+                <div className={s.category}>
+                  <p className={s.categoryText}>{item.strCategory}</p>
+                </div>
+              </div>
+              <div className={s.description}>
+                <p className={s.name}>{item.strMeal}</p>
+                <div className={s.descriptionText}>
+                  <p className={s.text}>{item.strArea} food</p>
                 </div>
               </div>
               <div className={s.buttons}>
-                <Link to={`/recipe/${item.idMeal}`}>
-                  <CustomButton text="Смотреть" />
+                <Link to={`/recipe/${item.idMeal}`} className={s.lookLink}>
+                  <CustomButton text="Смотреть" className={s.dopStyle} />
                 </Link>
                 <CustomButton
                   text="Удалить"
                   onClick={() => dispatch(favorite.actions.deleteRecipe(item))}
+                  className={s.dopStyle}
                 />
               </div>
             </div>

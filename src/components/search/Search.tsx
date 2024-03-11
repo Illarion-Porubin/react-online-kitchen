@@ -6,14 +6,14 @@ import s from "./Search.module.scss";
 interface Props {
   mainColor: "white" | "black";
   search: string;
-  setSearch: (value: string) => void
+  setSearch: (value: string) => void;
+  className?: string;
 }
 
-export const Search: React.FC<Props> = ({mainColor, search, setSearch}) => {
+export const Search: React.FC<Props> = ({mainColor, search, setSearch, className}) => {
 
   return (
-    <div className={s.search}>
-      {/* <button className={s.searchBtn} onClick={() => clearSearch()}>By <span className={s.searchAttribute}>{searchOption ? ' latter' : "name"}</span></button> */}
+    <div className={`${s.mainSearch} ${className}`}>
       <svg className={s.searchInput}
         width="20"
         height="20"

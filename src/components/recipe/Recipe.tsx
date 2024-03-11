@@ -33,6 +33,9 @@ export const Recipe: React.FC<Props> = ({ item }) => {
       {inView ? (
         <>
           <img className={s.picture} src={item.strMealThumb} alt="picture" />
+          <div className={s.category}>
+              <p className={s.categoryText}>{item.strCategory}</p>
+          </div>
           <div className={s.content}>
             <div className={s.buttonIcon}>
               <button className={s.heart}>
@@ -55,10 +58,9 @@ export const Recipe: React.FC<Props> = ({ item }) => {
             <article className={s.description}>
               <h3 className={s.title}>{item.strMeal}</h3>
               <p className={s.text}>{item.strArea} food</p>
-              {/* <p className={s.text}>{item.strCategory}</p> */}
             </article>
             <Link className={s.look} to={`/recipe/${item.idMeal}`}>
-              <CustomButton text="Смотреть" />
+              <CustomButton text="Смотреть" className={s.btn}/>
             </Link>
           </div>
         </>

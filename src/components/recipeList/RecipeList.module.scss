@@ -7,12 +7,17 @@
 .content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+@media(max-width: 880px){
+    .content{
+        // justify-content: center;
+    }
+}   
 
 @media(max-width: 480px){
     .title{
         font-size: 28px;
-    }
-    
+    } 
 }

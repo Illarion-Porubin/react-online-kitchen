@@ -1,16 +1,18 @@
 .skills{
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    top: 22px;
 }
 
 .title{
     font-size: 24px;
-    margin: 0;
-    margin-bottom: 30px;
+    line-height: 22px;
 }
 
-.feedback{
-    margin-right: 30px;
+.text{
+    font-size: 17px;
+    margin: 0 0 10px 0;
 }
 
 .feedback,.projects{
@@ -29,15 +31,32 @@
 
 .links{
     display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
 }
 
 .link {
     display: table-row;
     color: revert;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 .projectText{
     text-align: center;
+}
+
+@media(max-width: 460px) {
+    .title{
+        font-size: 22px;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+    .link {
+        display: table-row;
+        color: revert;
+        font-size: 12px;
+        line-height: 16px;
+    }
 }
 

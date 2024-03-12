@@ -9,6 +9,11 @@
     height: auto; 
 }
 
+.headerContetn{
+    display: flex;
+    align-items: center;
+}
+
 .logo{
     cursor: pointer;
     width: 180px;
@@ -25,6 +30,7 @@
 .menu {
     width: 340px;
     height: 32px;
+    margin-right: 40px;
 }
 
 .list {
@@ -53,10 +59,19 @@
     }
 }
 
-@media(max-width: 620px) {
+.mobMenu{
+    display: none;
+}
+
+@media(max-width: 720px) {
     .logo{
-        cursor: pointer;
         width: 50px;
+    }
+    .menu{
+        display: none;
+    }
+    .mobMenu{
+        display: block;
     }
 }
 

@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import recipeSlice from './slices/recipe';
-import favoriteSlice from './slices/favorite';
+import recipeSlice from './slices/recipeSlice';
+import favoriteSlice from './slices/favoriteSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,

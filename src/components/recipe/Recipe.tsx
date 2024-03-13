@@ -3,7 +3,7 @@ import s from "./Recipe.module.scss";
 import { Link } from "react-router-dom";
 import { CustomButton } from "../customButton/CustomButton";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
-import { favorite } from "../../redux/slices/favorite";
+import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { selectFavoriteData } from "../../redux/selectors";
 import { useInView } from "react-intersection-observer";
 
@@ -24,8 +24,8 @@ export const Recipe: React.FC<Props> = ({ item }) => {
 
   const checkFavorite = () => {
     check
-      ? dispatch(favorite.actions.deleteRecipe(item))
-      : dispatch(favorite.actions.addRecipe(item));
+      ? dispatch(favoriteSlice.actions.deleteRecipe(item))
+      : dispatch(favoriteSlice.actions.addRecipe(item));
   };
 
   return (

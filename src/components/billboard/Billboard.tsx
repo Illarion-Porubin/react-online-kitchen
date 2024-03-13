@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { selectRecipeData } from "../../redux/selectors";
 import { useDebounce } from "../../hooks/useDebounce";
-import { fetchFindByName } from "../../redux/slices/recipe";
+import { fetchFindByName } from "../../redux/slices/recipeSlice";
 export const Billboard: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
   const dispatch = useCustomDispatch();

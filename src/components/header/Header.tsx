@@ -3,21 +3,16 @@ import s from "./Header.module.scss";
 import logo from "../../assets/svg/logo.svg";
 import logoMini from "../../assets/svg/logo-mini.svg";
 import { Link } from "react-router-dom";
-import { useResizeDetector } from "react-resize-detector";
 import { BurgerMenu } from "../burgerMenu/BurgerMenu";
 import { MobileMenu } from "../../components/mobileMenu/MobileMenu";
+import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
+import { selectRecipeData } from "../../redux/selectors";
+import { recipeSlice } from "../../redux/slices/recipeSlice";
 
 export const Header: React.FC = () => {
   const [active, setActive] = React.useState<boolean>(false);
-
-  const { width, ref } = useResizeDetector({
-    handleHeight: false,
-    refreshMode: "debounce",
-    refreshRate: 30,
-    skipOnMount: true,
-  });
-
-  const checkWidth = !width ? window.screen.width : width;
+  const dispatch = useCustomDispatch()
+  const data = useCustomSelector(selectRecipeData);
 
   const menuList: { value: string; link: string }[] = [
     { value: "home", link: "/" },
@@ -26,23 +21,27 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <div className={s.header} ref={ref}>
+    <div className={s.header}>
       <div className={s.bg}></div>
       <div className="container">
         <div className={s.content}>
           <Link to="/">
-            <img
-              className={s.logo}
-              src={checkWidth > 720 ? logo : logoMini}
-              alt="logo"
-            />
+            <img className={s.logo} src={logo} alt="logo" />
+            <img className={s.mobileLogo} src={logoMini} alt="logo" />
           </Link>
           <div className={s.headerContetn}>
             <nav className={s.menu}>
               <ul className={s.list}>
                 {menuList.map((item, id: number) => (
-                  <li className={s.item} key={id}>
-                    <Link className={s.link} to={item.link}>
+                  <li className={s.item} key={id} onClick={() => dispatch(recipeSlice.actions.addCurrenPage(id))}>
+                    <Link
+                      className={
+                        data.currentPage === id
+                          ? `${s.link} ${s.active}`
+                          : s.link
+                      }
+                      to={item.link}
+                    >
                       {item.value}
                     </Link>
                   </li>

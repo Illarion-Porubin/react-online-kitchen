@@ -38,11 +38,13 @@ export const fetchFindRecipeById = createAsyncThunk<any, any, {rejectValue: stri
 interface State {
     recipeList: any,
     isLoading: 'idle' | 'loaded' | 'loading' | 'error',
-    error: string | null;
+    currentPage: number,
+    error: string | null,
 }
 
 const initialState: State = {
     recipeList: [],
+    currentPage: 0,
     isLoading: 'idle',
     error: null
 }
@@ -54,6 +56,9 @@ export const recipeSlice = createSlice({
     reducers: {
         clearState: (state) => {
             state.recipeList = []
+        },
+        addCurrenPage: (state, action) => {
+            state.currentPage = action.payload
         },
     },
     extraReducers: (builder) => (

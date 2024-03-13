@@ -6,18 +6,25 @@
 
 .header {
     width: 100%;
-    height: auto; 
+    height: auto;
 }
 
-.headerContetn{
+.headerContetn {
     display: flex;
     align-items: center;
 }
 
-.logo{
+.logo {
     cursor: pointer;
     width: 180px;
     height: auto;
+}
+
+.mobileLogo {
+    display: none;
+    z-index: -1;
+    width: 44px;
+    height: 44px;
 }
 
 .content {
@@ -49,50 +56,58 @@
     text-align: center;
     font-family: Inkfree;
     color: #000;
-    transition: all .3s;
-    &:hover{
+    transition: all 0.3s;
+    &:hover {
         color: #fe4f1e;
-        transition: all .3s;
+        transition: all 0.3s;
     }
-    span{
+    span {
         color: #fe4f1e;
     }
 }
 
-.mobMenu{
+.link.active {
+    color: #fe4f1e;
+}
+
+.mobMenu {
     display: none;
 }
 
-@media(max-width: 720px) {
-    .logo{
-        width: 50px;
-    }
-    .menu{
+@media (max-width: 720px) {
+    .logo {
         display: none;
     }
-    .mobMenu{
+    .mobileLogo {
+        z-index: 1;
+        display: block;
+    }
+    .menu {
+        display: none;
+    }
+    .mobMenu {
         display: block;
     }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
     .menu {
         width: 260px;
         height: auto;
     }
 
-    .link{
+    .link {
         font-size: 22px !important;
     }
 }
 
-@media(max-width: 380px) {
+@media (max-width: 380px) {
     .menu {
         width: 200px;
         height: auto;
     }
 
-    .link{
+    .link {
         font-size: 18px !important;
     }
 }

@@ -6,7 +6,7 @@ import { CustomButton } from "../../components/customButton/CustomButton";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { selectFavoriteData } from "../../redux/selectors";
 import { Link } from "react-router-dom";
-import { favorite } from "../../redux/slices/favorite";
+import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { Pagination } from "../../components/pagination/Pagination";
 
 export const Favorite: React.FC = () => {
@@ -75,7 +75,7 @@ export const Favorite: React.FC = () => {
                 </Link>
                 <CustomButton
                   text="Удалить"
-                  onClick={() => dispatch(favorite.actions.deleteRecipe(item))}
+                  onClick={() => dispatch(favoriteSlice.actions.deleteRecipe(item))}
                   className={s.dopStyle}
                 />
               </div>

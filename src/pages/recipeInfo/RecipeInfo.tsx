@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { useParams } from "react-router-dom";
 import { useCustomDispatch } from "../../hooks/store";
 import { Header } from "../../components/header/Header";
-import { fetchFindRecipeById } from "../../redux/slices/recipe";
+import { fetchFindRecipeById } from "../../redux/slices/recipeSlice";
 
 export const RecipeInfo: React.FC = () => {
   const dispatch = useCustomDispatch()

@@ -12,7 +12,7 @@ const initialState: State = {
     isLoading: 'idle',
 }
 
-export const favorite = createSlice({
+export const favoriteSlice = createSlice({
     name: 'favorite',
     initialState,
     reducers: {
@@ -34,4 +34,4 @@ export const favorite = createSlice({
     }
 })
 
-export default favorite.reducer;
+export default favoriteSlice.reducer;

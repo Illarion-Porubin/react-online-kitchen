@@ -4,9 +4,10 @@ import ReactPaginate from "react-paginate";
 
 interface Props {
     allPages: number,
-    items: any,
+    items: number,
     setCurrentPage: (value: number) => void
 }
+
 
 export const Pagination: React.FC<Props> = ({allPages, items, setCurrentPage}) => {
   const handlePageClick = (e: { selected: number }) => {

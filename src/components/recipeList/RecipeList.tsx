@@ -4,6 +4,7 @@ import { useCustomSelector } from "../../hooks/store";
 import { selectRecipeData } from "../../redux/selectors";
 import { Recipe } from "../recipe/Recipe";
 import { Pagination } from "../pagination/Pagination";
+import { RecipeType } from "../../types";
 
 export const RecipeList: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
@@ -23,7 +24,7 @@ export const RecipeList: React.FC = () => {
           <>
             <h2 className={s.title}>All the recipes</h2>
             <div className={s.content}>
-              {dataValue.map((item: any, id: string) => (
+              {dataValue.map((item: RecipeType, id: number) => (
                 <Recipe item={item} key={id} />
               ))}
             </div>

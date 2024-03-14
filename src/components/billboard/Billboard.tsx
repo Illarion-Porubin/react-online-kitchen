@@ -9,6 +9,7 @@ import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { selectRecipeData } from "../../redux/selectors";
 import { useDebounce } from "../../hooks/useDebounce";
 import { fetchFindByName } from "../../redux/slices/recipeSlice";
+
 export const Billboard: React.FC = () => {
   const data = useCustomSelector(selectRecipeData);
   const dispatch = useCustomDispatch();
@@ -21,9 +22,10 @@ export const Billboard: React.FC = () => {
     }
   }, [dispatch, debounce]);
 
+
   return (
     <>
-      <div className={s.bg} style={ data.recipeList > 0 ? { backgroundColor: "transparent"} : { backgroundColor: "#000"}}></div>
+      <div className={s.bg}></div>
       <div className={s.swiper}>     
         <Swiper
           modules={[EffectFade, Autoplay]}

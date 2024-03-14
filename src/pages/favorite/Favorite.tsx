@@ -8,12 +8,12 @@ import { selectFavoriteData } from "../../redux/selectors";
 import { Link } from "react-router-dom";
 import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { Pagination } from "../../components/pagination/Pagination";
+import { RecipeType } from "../../types";
 
 export const Favorite: React.FC = () => {
   const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectFavoriteData);
   const [search, setSearch] = React.useState<string>("");
-
   //////////////////////////////////////
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const items = 4;
@@ -21,14 +21,17 @@ export const Favorite: React.FC = () => {
   const minItems = currentPage >= 1 ? currentPage * items : currentPage;
   const maxItems = currentPage >= 1 ? minItems + items : items;
   const dataValue = data.favoriteList.slice(minItems, maxItems);
-  const [list, setList] = React.useState<any>([]);
+  const [list, setList] = React.useState<RecipeType[]>([]);
   const [visible, setVisable] = React.useState<boolean>(true);
 
-  console.log(list);
+  const deleteRecipe = React.useCallback( (value: RecipeType) => {
+    dispatch(favoriteSlice.actions.deleteRecipe(value));
+    setList(data.favoriteList)
+  }, [dispatch, data.favoriteList])
 
   React.useEffect(() => {
     if (search) {
-      const findRecipe = data.favoriteList.find((item: any) =>
+      const findRecipe = data.favoriteList.find((item: RecipeType) =>
         item.strMeal.toLowerCase() === search.toLowerCase() ? true : false
       );
       if (findRecipe) {
@@ -41,7 +44,11 @@ export const Favorite: React.FC = () => {
     } else {
       setList(dataValue);
     }
-  }, [search, currentPage]);
+  }, [search, currentPage, deleteRecipe]);
+
+  if (!data.favoriteList.length) {
+    window.location.href = "/";
+  }
 
   return (
     <>
@@ -51,7 +58,7 @@ export const Favorite: React.FC = () => {
           <Search mainColor="black" search={search} setSearch={setSearch} />
         </div>
         <div className={s.content}>
-          {list.map((item: any, id: number) => (
+          {list.map((item: RecipeType, id: number) => (
             <div className={s.item} key={id}>
               <div className={s.pictureWrap}>
                 <img
@@ -75,7 +82,7 @@ export const Favorite: React.FC = () => {
                 </Link>
                 <CustomButton
                   text="Удалить"
-                  onClick={() => dispatch(favoriteSlice.actions.deleteRecipe(item))}
+                  onClick={() => deleteRecipe(item)}
                   className={s.dopStyle}
                 />
               </div>

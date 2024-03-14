@@ -6,15 +6,18 @@ import { useParams } from "react-router-dom";
 import { useCustomDispatch } from "../../hooks/store";
 import { Header } from "../../components/header/Header";
 import { fetchFindRecipeById } from "../../redux/slices/recipeSlice";
+import { RecipeType } from "../../types";
 
 export const RecipeInfo: React.FC = () => {
   const dispatch = useCustomDispatch()
-  const [recipe, setRecipe] = React.useState<any | null>(null);
+  const [recipe, setRecipe] = React.useState<RecipeType | null >(null);
   const { id } = useParams();
 
 
   React.useEffect(() => {
-    if(id)dispatch(fetchFindRecipeById(id)).then(data => setRecipe(data.payload.meals[0]))
+    if(id){
+      dispatch(fetchFindRecipeById(id)).then(data => data.payload ? setRecipe(data.payload[0]) : null);
+    }
   }, []);
 
   if (recipe)

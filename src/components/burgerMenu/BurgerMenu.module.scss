@@ -26,6 +26,7 @@
     position: relative;
     top: 4px;
     border: none;
+    display: none;
     z-index: 11;
 
     &__burger_line_first,
@@ -76,8 +77,8 @@
 
 ///media
 
-// @media(max-width:1024px){
-//     .menu{
-//         display: block;
-//     }
-// }
+@media(max-width:720px){
+    .menu{
+        display: block;
+    }
+}

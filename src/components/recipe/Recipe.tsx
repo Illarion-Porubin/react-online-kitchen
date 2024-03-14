@@ -6,16 +6,17 @@ import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { selectFavoriteData } from "../../redux/selectors";
 import { useInView } from "react-intersection-observer";
+import { RecipeType } from "../../types";
 
 interface Props {
-  item: any;
+  item: RecipeType
 }
 
 export const Recipe: React.FC<Props> = ({ item }) => {
   const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectFavoriteData);
   const check = data.favoriteList.find(
-    (recipe) => recipe.idMeal === item.idMeal
+    (recipe: RecipeType) => recipe.idMeal === item.idMeal
   );
   const { ref, inView } = useInView({
     triggerOnce: true,

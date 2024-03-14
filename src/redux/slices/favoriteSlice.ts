@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RecipeType } from "../../types";
 
 interface State {
-    favoriteList: any | [],
+    favoriteList: RecipeType[],
     error: string | boolean,
     isLoading: 'idle' | 'loaded' | 'loading' | 'error',
 }
@@ -20,12 +21,12 @@ export const favoriteSlice = createSlice({
             if(!state.favoriteList.length){
                 state.favoriteList = [...state.favoriteList, action.payload]
             }
-            const findRecipe = state.favoriteList.find((item: any) => item.idMeal === action.payload.idMeal);
+            const findRecipe = state.favoriteList.find((item: RecipeType) => item.idMeal === action.payload.idMeal);
             state.favoriteList = !findRecipe ? [...state.favoriteList, action.payload] : state.favoriteList
         },
 
         deleteRecipe: (state, action) => {
-            state.favoriteList.map((item: any, id: number) => {
+            state.favoriteList.map((item: RecipeType, id: number) => {
                 if(item.idMeal === action.payload.idMeal) {
                     return state.favoriteList.splice(id, 1)
                 }

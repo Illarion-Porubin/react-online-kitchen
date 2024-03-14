@@ -8,8 +8,6 @@ interface Props {
 
 export const BurgerMenu: React.FC<Props> = ({setActive, active}) => {
 
-  console.log(active);
-
   return (
     <>
       <button className={active ? `${s.menu} ${s.active}` : `${s.menu}`}  onClick={() => setActive(!active)}>

@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import { BurgerMenu } from "../burgerMenu/BurgerMenu";
 import { MobileMenu } from "../../components/mobileMenu/MobileMenu";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
-import { selectRecipeData } from "../../redux/selectors";
+import { selectFavoriteData, selectRecipeData } from "../../redux/selectors";
 import { recipeSlice } from "../../redux/slices/recipeSlice";
 
 export const Header: React.FC = () => {
   const [active, setActive] = React.useState<boolean>(false);
-  const dispatch = useCustomDispatch()
+  const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectRecipeData);
+  const favoriteData = useCustomSelector(selectFavoriteData);
 
   const menuList: { value: string; link: string }[] = [
     { value: "home", link: "/" },
@@ -33,17 +34,40 @@ export const Header: React.FC = () => {
             <nav className={s.menu}>
               <ul className={s.list}>
                 {menuList.map((item, id: number) => (
-                  <li className={s.item} key={id} onClick={() => dispatch(recipeSlice.actions.addCurrenPage(id))}>
-                    <Link
-                      className={
-                        data.currentPage === id
-                          ? `${s.link} ${s.active}`
-                          : s.link
-                      }
-                      to={item.link}
-                    >
-                      {item.value}
-                    </Link>
+                  <li
+                    className={s.item}
+                    key={id}
+                    onClick={() =>
+                      dispatch(recipeSlice.actions.addCurrenPage(id))
+                    }
+                  >
+                    {!favoriteData.favoriteList.length &&
+                    item.value === "favorite" ? (
+                      <Link
+                        onClick={() => window.alert("Добавьте рецепт.")}
+                        className={
+                          data.currentPage === id
+                            ? `${s.link} ${s.active}`
+                            : s.link
+                        }
+                        to={""}
+                      >
+                        {`${item.value} ${favoriteData.favoriteList.length}`}
+                      </Link>
+                    ) : (
+                      <Link
+                        className={
+                          data.currentPage === id
+                            ? `${s.link} ${s.active}`
+                            : s.link
+                        }
+                        to={item.link}
+                      >
+                        {item.value === "favorite"
+                          ? `${item.value} ${favoriteData.favoriteList.length}`
+                          : item.value}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

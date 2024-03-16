@@ -10,7 +10,7 @@ interface Props {
 
 export const MobileMenu: React.FC<Props> = ({ menuList, active, clasName }) => {
   return (
-    <div className={`${s.mainClasName} ${clasName}`}>
+    <div className={`${s.mainClasName} ${clasName}`} style={{zIndex: active ? 10 : 9}}>
       <nav className={active ? `${s.menu} ${s.active}` : s.menu}>
         <ul className={s.list}>
           {menuList.map((item, id: number) => (

@@ -40,33 +40,39 @@ export const About: React.FC = () => {
         <section className={s.about}>
           <div className={s.mainInfo}>
             <h1 className={s.title}>Информация обо мне</h1>
-            <div className={s.info}>
-              <p className={s.text}>
-                Здравствуйте! Меня зовут Илларион, мне 28 и я fullstack
-                developer.<br/>Закончил (Новороссийский колледж радиоэлектронного
-                приборостроения) - НКРП, получил среднее специальное
-                образование.
-              </p>
-              <p className={s.text}>
-                Вот уже 4 года я занимаюсь веб разработкой, за это время было
-                создано много проектов различной сложности начиная от
-                одностраничника с использованием Gulp и заканчивая интернет
-                магазином с применением: React, Redux, Redux-toolkit,
-                Redux-persist, React-router-dom, Axios, MySql, Sequelize,
-                Passport-google-oauth20 и т.д.
-              </p>
-              <p className={s.text}>
-                Я не проходил обучение в “онлайн школах” где за 6
-                месяцев из тебя якобы сделают гуру web или back разработки, так
-                как всё это очень сомнительно. <br /> Информацию для обучения
-                беру из докуменаций, открытых источников и на YouTub. <br/> Весь мой
-                опыт постигался долгие 4 года, за это время я успел поработать
-                на фрилансе и с коллективом.
-              </p>
-              <p className={s.text}>
-                Буду рад с вами сотрудничать, ниже оставлю ссылки на обратную
-                связь и другие мои проекты.
-              </p>
+            <div className={s.me}>
+              <div className={s.info}>
+                <p className={s.text}>
+                  Здравствуйте! Меня зовут Илларион, мне 28 и я fullstack
+                  developer.
+                  <br />
+                  Закончил (Новороссийский колледж радиоэлектронного
+                  приборостроения) - НКРП, получил среднее специальное
+                  образование.
+                </p>
+                <p className={s.text}>
+                  Вот уже 4 года я занимаюсь веб разработкой, за это время было
+                  создано много проектов различной сложности начиная от
+                  одностраничника с использованием Gulp и заканчивая интернет
+                  магазином с применением: React, Redux, Redux-toolkit,
+                  Redux-persist, React-router-dom, Axios, MySql, Sequelize,
+                  Passport-google-oauth20 и т.д.
+                </p>
+                <p className={s.text}>
+                  Я не проходил обучение в “онлайн школах” где за 6 месяцев из
+                  тебя якобы сделают гуру web или back разработки, так как всё
+                  это очень сомнительно. <br /> Информацию для обучения беру из
+                  докуменаций, открытых источников и на YouTub. <br /> Весь мой
+                  опыт постигался долгие 4 года, за это время я успел поработать
+                  на фрилансе и с коллективом.
+                </p>
+                <p className={s.text}>Буду рад с вами сотрудничать.</p>
+              </div>
+              <img
+                  className={s.photo}
+                  src="https://sun9-3.userapi.com/impf/Y0lTAQylHIiXm5He-TDsCjo_PzpEjkDiCQ4GLA/A-hmEYsL8yo.jpg?size=524x604&quality=96&sign=ef7651edd7d63b6f581122adacf32f52&c_uniq_tag=kH4tYsw_-Ko5R4aePQlW0KUbV2CulNdX0Lan5Yv2R9Q&type=album"
+                  alt="img"
+                />
             </div>
             <div className={s.links}>
               <div className={s.feedback}>
@@ -78,7 +84,7 @@ export const About: React.FC = () => {
                   Ссылка на Google почту
                 </a>
               </div>
-              <div className={s.projects}>
+              {/* <div className={s.projects}>
                 <h1 className={s.title}>Другие проекты</h1>
                 <a className={s.link} href="/#">
                   Ссылка на другой проект
@@ -86,7 +92,7 @@ export const About: React.FC = () => {
                 <a className={s.link} href="/#">
                   Ссылка на другой проект
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={s.dopInfo}>

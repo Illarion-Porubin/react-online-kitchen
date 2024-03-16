@@ -23,10 +23,9 @@ export const Header: React.FC = () => {
 
   return (
     <div className={s.header}>
-      <div className={s.bg}></div>
       <div className="container">
         <div className={s.content}>
-          <Link to="/">
+          <Link to="/" className={s.mainLogo}>
             <img className={s.logo} src={logo} alt="logo" />
             <img className={s.mobileLogo} src={logoMini} alt="logo" />
           </Link>

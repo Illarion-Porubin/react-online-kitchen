@@ -6,9 +6,8 @@ import { Recipe } from "../recipe/Recipe";
 import { Pagination } from "../pagination/Pagination";
 import { RecipeType } from "../../types";
 
-export const RecipeList: React.FC = () => {
+export const RecipeList: React.FC = React.memo(() => {
   const data = useCustomSelector(selectRecipeData);
-
   /////The server did not provide API, so we implement the logic on the client/////
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const items = 6;
@@ -17,10 +16,14 @@ export const RecipeList: React.FC = () => {
   const maxItems = currentPage >= 1 ? minItems + items : items;
   const dataValue = data.recipeList.slice(minItems, maxItems);
 
+  React.useEffect(() => {
+    console.log(data.recipeList);
+  }, []);
+  
   return (
     <div className="container">
       <section className={s.recipeList}>
-        {data.isLoading === "loaded" && data.recipeList.length > 0 ? (
+        {data.isLoading === "loaded" && dataValue.length > 0 ? (
           <>
             <h2 className={s.title}>All the recipes</h2>
             <div className={s.content}>
@@ -40,4 +43,4 @@ export const RecipeList: React.FC = () => {
       </section>
     </div>
   );
-};
+});

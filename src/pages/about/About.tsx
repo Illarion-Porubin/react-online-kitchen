@@ -13,11 +13,11 @@ import postgresql from "../../assets/svg/skills/postgresql.svg";
 import mongodb from "../../assets/svg/skills/mongodb.svg";
 import materialui from "../../assets/svg/skills/material-ui.svg";
 import node from "../../assets/svg/skills/node.svg";
-import { Header } from "../../components/header/Header";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Autoplay } from "swiper/modules";
 
-export const About: React.FC = () => {
+export const About: React.FC = React.memo(() => {
   const icons = [
     js,
     ts,
@@ -35,7 +35,6 @@ export const About: React.FC = () => {
   ];
   return (
     <>
-      <Header />
       <div className="container">
         <section className={s.about}>
           <div className={s.mainInfo}>
@@ -62,8 +61,7 @@ export const About: React.FC = () => {
                   Я не проходил обучение в “онлайн школах” где за 6 месяцев из
                   тебя якобы сделают гуру web или back разработки, так как всё
                   это очень сомнительно. <br /> Информацию для обучения беру из
-                  докуменаций, открытых источников и на YouTub. <br /> Весь мой
-                  опыт постигался долгие 4 года, за это время я успел поработать
+                  документаций, открытых источников и на YouTub. <br />За это время я успел поработать
                   на фрилансе и с коллективом.
                 </p>
                 <p className={s.text}>Буду рад с вами сотрудничать.</p>
@@ -77,22 +75,14 @@ export const About: React.FC = () => {
             <div className={s.links}>
               <div className={s.feedback}>
                 <h1 className={s.title}>Обратная связь</h1>
-                <a className={s.link} href="/#">
+                <a className={s.link} href="https://github.com/Illarion-Porubin" target="blank">
                   Ссылка на GitHub
                 </a>
-                <a className={s.link} href="/#">
-                  Ссылка на Google почту
+                <a className={s.link} href="mailto:lars.mywork@gmail.com&body=Привет!?subject=Хочу с вами сотрудничать">
+                  Пиши мне на Google почту
                 </a>
+                <p className={s.myMail}>Или так: <span>lars.mywork@gmail.com</span></p>
               </div>
-              {/* <div className={s.projects}>
-                <h1 className={s.title}>Другие проекты</h1>
-                <a className={s.link} href="/#">
-                  Ссылка на другой проект
-                </a>
-                <a className={s.link} href="/#">
-                  Ссылка на другой проект
-                </a>
-              </div> */}
             </div>
           </div>
           <div className={s.dopInfo}>
@@ -136,4 +126,4 @@ export const About: React.FC = () => {
       </div>
     </>
   );
-};
+}) 

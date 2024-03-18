@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Favorite.module.scss";
-import { Header } from "../../components/header/Header";
 import { Search } from "../../components/search/Search";
 import { CustomButton } from "../../components/customButton/CustomButton";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
@@ -9,25 +8,34 @@ import { Link } from "react-router-dom";
 import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { Pagination } from "../../components/pagination/Pagination";
 import { RecipeType } from "../../types";
+import { usePaginate } from "../../hooks/usePaginate";
 
-export const Favorite: React.FC = () => {
+interface Models {
+  models: {
+    dataValue: RecipeType[]
+    allPages: number
+    items: number,
+  };
+}
+
+export const Favorite: React.FC = React.memo(() => {
   const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectFavoriteData);
   const [search, setSearch] = React.useState<string>("");
-  //////////////////////////////////////
   const [currentPage, setCurrentPage] = React.useState<number>(0);
-  const items = 4;
-  const allPages = Math.ceil(data.favoriteList.length / items);
-  const minItems = currentPage >= 1 ? currentPage * items : currentPage;
-  const maxItems = currentPage >= 1 ? minItems + items : items;
-  const dataValue = data.favoriteList.slice(minItems, maxItems);
   const [list, setList] = React.useState<RecipeType[]>([]);
   const [visible, setVisable] = React.useState<boolean>(true);
 
-  const deleteRecipe = React.useCallback( (value: RecipeType) => {
-    dispatch(favoriteSlice.actions.deleteRecipe(value));
-    setList(data.favoriteList)
-  }, [dispatch, data.favoriteList])
+  const { models }: Models = usePaginate({items: 4, currentPage, dataList: data.favoriteList});
+
+  const deleteRecipe = React.useCallback(
+    (value: RecipeType) => {
+      dispatch(favoriteSlice.actions.deleteRecipe(value));
+      setList(data.favoriteList);
+    },
+    [dispatch, data.favoriteList]
+  );
+  
 
   React.useEffect(() => {
     if (search) {
@@ -38,13 +46,18 @@ export const Favorite: React.FC = () => {
         setList([findRecipe]);
         setVisable(false);
       } else {
-        setList(dataValue);
+        setList(models.dataValue);
         setVisable(true);
       }
     } else {
-      setList(dataValue);
+      setList(models.dataValue);
     }
-  }, [search, currentPage, deleteRecipe]);
+  }, [
+    search,
+    deleteRecipe, 
+    data.favoriteList,
+    currentPage
+  ]);
 
   if (!data.favoriteList.length) {
     window.location.href = "/";
@@ -52,10 +65,9 @@ export const Favorite: React.FC = () => {
 
   return (
     <>
-      <Header />
       <div className="container">
         <div className={s.search}>
-          <Search mainColor="black" search={search} setSearch={setSearch} />
+          <Search mainColor="black" setSearch={setSearch} />
         </div>
         <div className={s.content}>
           {list.map((item: RecipeType, id: number) => (
@@ -91,12 +103,12 @@ export const Favorite: React.FC = () => {
         </div>
         <div style={{ display: visible ? "block" : "none" }}>
           <Pagination
-            allPages={allPages}
+            allPages={models.allPages}
             setCurrentPage={setCurrentPage}
-            items={items}
+            items={models.items}
           />
         </div>
       </div>
     </>
   );
-};
+});

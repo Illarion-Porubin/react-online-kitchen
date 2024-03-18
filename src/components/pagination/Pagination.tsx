@@ -9,21 +9,17 @@ interface Props {
 }
 
 
-export const Pagination: React.FC<Props> = ({allPages, items, setCurrentPage}) => {
-  const handlePageClick = (e: { selected: number }) => {
-    setCurrentPage(e.selected);
-  };
-
+export const Pagination: React.FC<Props> = React.memo(({allPages, items, setCurrentPage}) => {
   return (
     <ReactPaginate
       className={s.root}
       breakLabel="..."
       nextLabel=">"
-      onPageChange={handlePageClick}
+      onPageChange={(e: { selected: number }) => setCurrentPage(e.selected)}
       pageRangeDisplayed={items}
       pageCount={allPages}
       previousLabel="<"
       renderOnZeroPageCount={null}
     />
   );
-};
+})

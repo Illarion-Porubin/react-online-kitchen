@@ -1,11 +1,10 @@
 import React from "react";
 import s from "./Eroor.module.scss";
-import { Header } from "../../components/header/Header";
 
-export const Error: React.FC = () => {
+export const Error: React.FC = React.memo(() => {
+
   return (
     <>
-      <Header />
       <div className="container">
         <div className={s.eroor}>
           <h1 className={s.eroorTitle}>The page was not found</h1>
@@ -14,4 +13,4 @@ export const Error: React.FC = () => {
       </div>
     </>
   );
-};
+}) 

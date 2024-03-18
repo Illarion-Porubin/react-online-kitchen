@@ -4,11 +4,10 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useParams } from "react-router-dom";
 import { useCustomDispatch } from "../../hooks/store";
-import { Header } from "../../components/header/Header";
 import { fetchFindRecipeById } from "../../redux/slices/recipeSlice";
 import { RecipeType } from "../../types";
 
-export const RecipeInfo: React.FC = () => {
+export const RecipeInfo: React.FC = React.memo(() => {
   const dispatch = useCustomDispatch()
   const [recipe, setRecipe] = React.useState<RecipeType | null >(null);
   const { id } = useParams();
@@ -20,10 +19,13 @@ export const RecipeInfo: React.FC = () => {
     }
   }, []);
 
+  React.useEffect(() => {
+    console.log('RecipeInfo');
+  },[])
+
   if (recipe)
     return (
       <>
-        <Header />
         <div
           className={s.billboard}
           style={{ backgroundImage: `url(${recipe.strMealThumb})`}}
@@ -52,4 +54,4 @@ export const RecipeInfo: React.FC = () => {
         </div>
       </>
     );
-};
+}) 

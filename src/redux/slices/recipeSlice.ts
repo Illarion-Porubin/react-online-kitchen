@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RecipeType } from "../../types";
 
 
@@ -59,7 +59,6 @@ export const recipeSlice = createSlice({
             state.isLoading = "loading";
         })
         .addCase(fetchFindByName.fulfilled, (state, action) => {
-            console.log(action.payload, 'action.payload.meals');
             state.recipeList = Array.isArray(action.payload) ? action.payload : [];
             state.isLoading = "loaded";
         })

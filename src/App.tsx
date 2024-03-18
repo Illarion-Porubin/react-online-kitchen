@@ -13,11 +13,13 @@ import { Favorite } from "./pages/favorite/Favorite";
 import { Error } from "./pages/eroor/Eroor";
 import { RecipeInfo } from "./pages/recipeInfo/RecipeInfo";
 import { About } from "./pages/about/About";
+import { Header } from "./components/header/Header";
 
 
 function App() {
   return (
     <>
+    <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

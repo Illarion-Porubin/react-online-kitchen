@@ -8,7 +8,13 @@ interface Props {
   clasName?: string;
 }
 
-export const MobileMenu: React.FC<Props> = ({ menuList, active, clasName }) => {
+export const MobileMenu: React.FC<Props> = React.memo(({ menuList, active, clasName }) => {
+
+  React.useEffect(() => {
+    console.log('MobileMenu');
+  },[])
+
+
   return (
     <div className={`${s.mainClasName} ${clasName}`} style={{zIndex: active ? 10 : 9}}>
       <nav className={active ? `${s.menu} ${s.active}` : s.menu}>
@@ -24,4 +30,4 @@ export const MobileMenu: React.FC<Props> = ({ menuList, active, clasName }) => {
       </nav>
     </div>
   );
-};
+})

@@ -1,16 +1,20 @@
 import React from "react";
 import s from "./Search.module.scss";
-
-
+import { useDebounce } from "../../hooks/useDebounce";
 
 interface Props {
   mainColor: "white" | "black";
-  search: string;
   setSearch: (value: string) => void;
   className?: string;
 }
 
-export const Search: React.FC<Props> = ({mainColor, search, setSearch, className}) => {
+export const Search: React.FC<Props> = React.memo(({mainColor, setSearch, className}) => {
+  const [text, setText] = React.useState<string>('');
+  const debounce = useDebounce(text, 400);
+  
+  React.useEffect(() => {
+    setSearch(debounce)
+  },[debounce, setSearch])
 
   return (
     <div className={`${s.mainSearch} ${className}`}>
@@ -29,12 +33,12 @@ export const Search: React.FC<Props> = ({mainColor, search, setSearch, className
       <input
         className={s.input}
         style={{color: mainColor}}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
         type="text"
         placeholder="Search"
         autoFocus
-        value={search}
+        value={text}
       />
     </div>
   );
-};
+}) 

@@ -8,6 +8,7 @@
 .title {
     font-size: 24px;
     line-height: 22px;
+    margin: 26px 0;
 }
 
 .me {
@@ -56,6 +57,15 @@
     color: revert;
     font-size: 14px;
     line-height: 18px;
+}
+
+.myMail{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    span{
+        font-weight: bold;
+    }
 }
 
 .projectText {

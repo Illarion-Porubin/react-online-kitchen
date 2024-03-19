@@ -5,7 +5,6 @@ interface Props {
     items: number,
     currentPage: number,
     dataList: RecipeType[],
-    // setList: React.Dispatch<React.SetStateAction<RecipeType[]>>
 }
 
 export const usePaginate = ({items, dataList, currentPage}: Props) => {
@@ -14,14 +13,8 @@ export const usePaginate = ({items, dataList, currentPage}: Props) => {
     const maxItems = currentPage >= 1 ? minItems + items : items;
     const dataValue = dataList.slice(minItems, maxItems);
 
-    console.log('usePaginate');
-
-    // React.useMemo(() => {
-    //     setList(dataList.slice(minItems, maxItems));
-    // }, [currentPage])
-
   return {
-    models: {
+    paginate: {
         dataValue,
         allPages,
         items,

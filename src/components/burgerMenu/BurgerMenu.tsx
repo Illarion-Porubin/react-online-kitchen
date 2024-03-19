@@ -6,11 +6,8 @@ interface Props {
   active: boolean,
 }
 
-export const BurgerMenu: React.FC<Props> = React.memo(({setActive, active}) => {
+export const BurgerMenu: React.FC<Props> = ({setActive, active}) => {
 
-  React.useEffect(() => {
-    console.log('BurgerMenu');
-  },[])
 
   return (
     <>
@@ -21,4 +18,4 @@ export const BurgerMenu: React.FC<Props> = React.memo(({setActive, active}) => {
       </button>
     </>
   );
-})
+}

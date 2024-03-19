@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-export const Pagination: React.FC<Props> = React.memo(({allPages, items, setCurrentPage}) => {
+export const Pagination: React.FC<Props> = ({allPages, items, setCurrentPage}) => {
   return (
     <ReactPaginate
       className={s.root}
@@ -22,4 +22,4 @@ export const Pagination: React.FC<Props> = React.memo(({allPages, items, setCurr
       renderOnZeroPageCount={null}
     />
   );
-})
+}

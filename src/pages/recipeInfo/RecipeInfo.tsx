@@ -19,10 +19,6 @@ export const RecipeInfo: React.FC = React.memo(() => {
     }
   }, []);
 
-  React.useEffect(() => {
-    console.log('RecipeInfo');
-  },[])
-
   if (recipe)
     return (
       <>

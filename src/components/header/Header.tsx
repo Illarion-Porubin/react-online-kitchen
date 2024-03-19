@@ -9,7 +9,7 @@ import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { selectFavoriteData, selectRecipeData } from "../../redux/selectors";
 import { recipeSlice } from "../../redux/slices/recipeSlice";
 
-export const Header: React.FC = React.memo(() => {
+export const Header: React.FC = () => {
   const [active, setActive] = React.useState<boolean>(false);
   const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectRecipeData);
@@ -82,4 +82,4 @@ export const Header: React.FC = React.memo(() => {
       </div>
     </div>
   );
-})
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Recipe.module.scss";
 import { Link } from "react-router-dom";
-// import { CustomButton } from "../customButton/CustomButton";
+import { CustomButton } from "../customButton/CustomButton";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
 import { favoriteSlice } from "../../redux/slices/favoriteSlice";
 import { selectFavoriteData } from "../../redux/selectors";
@@ -12,7 +12,7 @@ interface Props {
   item: RecipeType
 }
 
-export const Recipe: React.FC<Props> = React.memo(({ item }) => {
+export const Recipe: React.FC<Props> = ({ item }) => {
   const dispatch = useCustomDispatch();
   const data = useCustomSelector(selectFavoriteData);
   const check = data.favoriteList.find(
@@ -27,11 +27,9 @@ export const Recipe: React.FC<Props> = React.memo(({ item }) => {
     check
       ? dispatch(favoriteSlice.actions.deleteRecipe(item))
       : dispatch(favoriteSlice.actions.addRecipe(item));
-  },[check]);
+  },[check, dispatch, item]);
 
-  React.useEffect(() => {
-    console.log('Recipe');
-  },[])
+
 
   return (
     <div className={s.recipe} ref={ref}>
@@ -65,7 +63,7 @@ export const Recipe: React.FC<Props> = React.memo(({ item }) => {
               <p className={s.text}>{item.strArea} food</p>
             </article>
             <Link className={s.look} to={`/recipe/${item.idMeal}`}>
-              {/* <CustomButton text="Смотреть" className={s.btn}/> */}
+              <CustomButton text="Смотреть" className={s.btn}/>
             </Link>
           </div>
         </>
@@ -76,4 +74,4 @@ export const Recipe: React.FC<Props> = React.memo(({ item }) => {
       )}
     </div>
   );
-})
+}

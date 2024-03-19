@@ -4,11 +4,16 @@ import { selectFavoriteData } from "../redux/selectors";
 import { RecipeType } from "../types";
 import { favoriteSlice } from "../redux/slices/favoriteSlice";
 
-export const useFavorite = () => {
+interface Props {
+  currentPage: number,
+  dataValue: RecipeType[],
+  setList: React.Dispatch<React.SetStateAction<RecipeType[]>>,
+}
+
+export const useFavorite = ({ currentPage, dataValue, setList }: Props) => {
   const data = useCustomSelector(selectFavoriteData);
   const dispatch = useCustomDispatch();
   const [search, setSearch] = React.useState<string>("");
-  const [list, setList] = React.useState<RecipeType[]>([]);
   const [visible, setVisable] = React.useState<boolean>(true);
 
   const deleteRecipe = React.useCallback(
@@ -16,7 +21,7 @@ export const useFavorite = () => {
       dispatch(favoriteSlice.actions.deleteRecipe(value));
       setList(data.favoriteList);
     },
-    [dispatch, data.favoriteList]
+    [dispatch, setList, data.favoriteList]
   );
 
   React.useEffect(() => {
@@ -27,16 +32,19 @@ export const useFavorite = () => {
       if (findRecipe) {
         setList([findRecipe]);
         setVisable(false);
+      } else {
+        setList(dataValue);
+        setVisable(true);
       }
+    } else {
+      setList(dataValue);
     }
-  }, [data.favoriteList, search]);
+  }, [search, deleteRecipe, data.favoriteList, currentPage]); // Don't add setList and dataValue
 
   return {
-    models: {
-      list,
+    favorite: {
       search,
       visible,
-      setList,
       setSearch,
       setVisable,
       deleteRecipe,

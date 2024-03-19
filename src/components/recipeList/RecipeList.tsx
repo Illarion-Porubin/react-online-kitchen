@@ -5,29 +5,34 @@ import { selectRecipeData } from "../../redux/selectors";
 import { Recipe } from "../recipe/Recipe";
 import { Pagination } from "../pagination/Pagination";
 import { RecipeType } from "../../types";
+import { usePaginate } from "../../hooks/usePaginate";
+
+interface uPaginate {
+  paginate: {
+    dataValue: RecipeType[];
+    allPages: number;
+    items: number;
+  };
+}
 
 export const RecipeList: React.FC = React.memo(() => {
   const data = useCustomSelector(selectRecipeData);
-  /////The server did not provide API, so we implement the logic on the client/////
   const [currentPage, setCurrentPage] = React.useState<number>(0);
-  const items = 6;
-  const allPages = Math.ceil(data.recipeList.length / items);
-  const minItems = currentPage >= 1 ? currentPage * items : currentPage;
-  const maxItems = currentPage >= 1 ? minItems + items : items;
-  const dataValue = data.recipeList.slice(minItems, maxItems);
+  const { paginate }: uPaginate = usePaginate({
+    items: 6,
+    currentPage,
+    dataList: data.recipeList,
+  });
 
-  React.useEffect(() => {
-    console.log(data.recipeList);
-  }, []);
-  
+
   return (
     <div className="container">
       <section className={s.recipeList}>
-        {data.isLoading === "loaded" && dataValue.length > 0 ? (
+        {data.isLoading === "loaded" && paginate.dataValue.length > 0 ? (
           <>
             <h2 className={s.title}>All the recipes</h2>
             <div className={s.content}>
-              {dataValue.map((item: RecipeType, id: number) => (
+              {paginate.dataValue.map((item: RecipeType, id: number) => (
                 <Recipe item={item} key={id} />
               ))}
             </div>
@@ -35,8 +40,8 @@ export const RecipeList: React.FC = React.memo(() => {
         ) : null}
         <div className={s.paginationWrap}>
           <Pagination
-            allPages={allPages}
-            items={items}
+            allPages={paginate.allPages}
+            items={paginate.items}
             setCurrentPage={setCurrentPage}
           />
         </div>

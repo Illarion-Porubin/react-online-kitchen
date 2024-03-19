@@ -24,7 +24,6 @@ export const fetchFindRecipeById = createAsyncThunk<RecipeType[], string, {rejec
     }
 )
 
-
 interface State {
     recipeList: RecipeType[],
     isLoading: 'idle' | 'loaded' | 'loading' | 'error',

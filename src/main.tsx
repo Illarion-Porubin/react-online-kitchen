@@ -7,10 +7,10 @@ import { persistor, store } from "./redux/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <HashRouter>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>
-</HashRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </HashRouter>
 );

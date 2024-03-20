@@ -38,7 +38,7 @@ export const RecipeList: React.FC = React.memo(() => {
             </div>
           </>
         ) : null}
-        <div className={s.paginationWrap} style={paginate.allPages ? {display: "block"} : {display: 'none'}}>
+        <div className={s.paginationWrap} style={{display: paginate.allPages ? "block" : 'none'}}>
           <Pagination
             allPages={paginate.allPages}
             items={paginate.items}

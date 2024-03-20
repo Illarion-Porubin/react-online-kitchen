@@ -5,16 +5,24 @@
     font-family: Inkfree;
 }
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-@media(max-width: 880px){
+@media(max-width: 720px){
     .content{
-        // justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
     }
 }   
+
+@media(max-width: 520px){
+    .content{
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        gap: 10px;
+    }
+} 
 
 @media(max-width: 480px){
     .title{

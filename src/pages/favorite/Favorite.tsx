@@ -33,6 +33,10 @@ export const Favorite: React.FC = React.memo(() => {
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const [list, setList] = React.useState<RecipeType[]>([]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const { paginate }: uPaginate = usePaginate({
     items: 4,
     currentPage,
@@ -43,7 +47,7 @@ export const Favorite: React.FC = React.memo(() => {
     currentPage,
     dataValue: paginate.dataValue,
     setList,
-  })
+  });
 
   const RecipeContent: React.FC = () => {
     return (

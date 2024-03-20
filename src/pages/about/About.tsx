@@ -79,9 +79,8 @@ export const About: React.FC = React.memo(() => {
                   Ссылка на GitHub
                 </a>
                 <a className={s.link} href="mailto:lars.mywork@gmail.com&body=Привет!?subject=Хочу с вами сотрудничать">
-                  Пиши мне на Google почту
+                  Пиши мне на Google почту <span>lars.mywork@gmail.com</span>
                 </a>
-                <p className={s.myMail}>Или так: <span>lars.mywork@gmail.com</span></p>
               </div>
             </div>
           </div>

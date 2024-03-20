@@ -3,29 +3,32 @@
     width: 100%;
     height: 100%;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -10;
-    overflow: hidden;
-}
-
-.menu {
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
     left: 100%;
     right: 0;
     bottom: 0;
-    position: absolute;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.3s;
 }
 
-.menu.active {
+.mainClasName.active{
     left: 0%;
+    transition: all 0.3s;
 }
 
+.menu {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 .list {
-    width: 100%;
+    width: 100px;
     height: 100%;
     display: flex;
     justify-content: center;

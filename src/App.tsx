@@ -5,7 +5,7 @@ import "./styles/fonts.scss";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
-//
+
 
 import { Home } from "./pages/home/Home";
 import { Route, Routes } from "react-router-dom";

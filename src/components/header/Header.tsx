@@ -75,6 +75,7 @@ export const Header: React.FC = () => {
               menuList={menuList}
               active={active}
               clasName={s.mobMenu}
+              favoriteCount={favoriteData.favoriteList.length}
             />
             <BurgerMenu active={active} setActive={setActive} />
           </div>

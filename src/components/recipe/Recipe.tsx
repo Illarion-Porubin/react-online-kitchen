@@ -63,7 +63,7 @@ export const Recipe: React.FC<Props> = ({ item }) => {
               <p className={s.text}>{item.strArea} food</p>
             </article>
             <Link className={s.look} to={`/recipe/${item.idMeal}`}>
-              <CustomButton text="Смотреть" className={s.btn}/>
+              <CustomButton text="Look" className={s.btn}/>
             </Link>
           </div>
         </>

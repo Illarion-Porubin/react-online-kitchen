@@ -11,7 +11,6 @@ interface Props {
 export const Pagination: React.FC<Props> = ({allPages, setCurrentPage}) => {
   return (
     <ReactPaginate
-      
       className={s.root}
       breakLabel="..."
       nextLabel=">"

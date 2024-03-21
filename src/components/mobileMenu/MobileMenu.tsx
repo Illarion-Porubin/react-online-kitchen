@@ -6,23 +6,47 @@ interface Props {
   menuList: { value: string; link: string }[];
   active: boolean;
   clasName?: string;
+  favoriteCount: number;
 }
 
-export const MobileMenu: React.FC<Props> = ({ menuList, active, clasName }) => {
-
+export const MobileMenu: React.FC<Props> = ({
+  menuList,
+  active,
+  clasName,
+  favoriteCount,
+}) => {
   return (
-    <div className={active ? `${s.mainClasName} ${s.active} ${clasName} ` : `${s.mainClasName} ${clasName}`} style={{zIndex: active ? 10 : 9}}>
+    <div
+      className={
+        active
+          ? `${s.mainClasName} ${s.active} ${clasName} `
+          : `${s.mainClasName} ${clasName}`
+      }
+      style={{ zIndex: active ? 10 : 9 }}
+    >
       <nav className={s.menu}>
         <ul className={s.list}>
           {menuList.map((item, id: number) => (
             <li className={s.item} key={id}>
-              <Link className={s.link} to={item.link}>
-                {item.value}
-              </Link>
+              {item.value === "favorite" && !favoriteCount ? (
+                <Link
+                  className={s.list}
+                  onClick={() => window.alert("Добавьте рецепт.")}
+                  to={""}
+                >
+                  favorite
+                </Link>
+              ) : (
+                <Link className={s.list} to={item.link}>
+                  {item.value === "favorite"
+                    ? `${item.value} ${favoriteCount}`
+                    : item.value}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
       </nav>
     </div>
   );
-}
+};

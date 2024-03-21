@@ -33,10 +33,6 @@ export const Favorite: React.FC = React.memo(() => {
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const [list, setList] = React.useState<RecipeType[]>([]);
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   const { paginate }: uPaginate = usePaginate({
     items: 4,
     currentPage,
@@ -72,7 +68,7 @@ export const Favorite: React.FC = React.memo(() => {
             </div>
             <div className={s.buttons}>
               <Link to={`/recipe/${item.idMeal}`} className={s.lookLink}>
-                <CustomButton text="Смотреть" className={s.dopStyle} />
+                <CustomButton text="Look" className={s.dopStyle} />
               </Link>
               <CustomButton
                 text="Удалить"
@@ -93,7 +89,7 @@ export const Favorite: React.FC = React.memo(() => {
         <div className={s.content}>
           <RecipeContent />
         </div>
-        <div style={{ display: favorite.visible ? "block" : "none" }}>
+        <div style={{ display: favorite.visible && paginate.allPages ? "block" : "none" }}>
           <Pagination
             allPages={paginate.allPages}
             setCurrentPage={setCurrentPage}

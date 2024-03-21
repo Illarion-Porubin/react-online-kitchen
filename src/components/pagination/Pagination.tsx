@@ -8,14 +8,15 @@ interface Props {
     setCurrentPage: (value: number) => void
 }
 
-export const Pagination: React.FC<Props> = ({allPages, setCurrentPage}) => {
+export const Pagination: React.FC<Props> = ({allPages, setCurrentPage }) => {
+  const pageRange = allPages > 1 ? 3 : 1;
   return (
     <ReactPaginate
       className={s.root}
       breakLabel="..."
       nextLabel=">"
       onPageChange={(e: { selected: number }) => setCurrentPage(e.selected)}
-      pageRangeDisplayed={3}
+      pageRangeDisplayed={pageRange}
       pageCount={allPages}
       previousLabel="<"
       marginPagesDisplayed={0}

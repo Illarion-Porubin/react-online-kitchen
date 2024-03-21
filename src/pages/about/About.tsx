@@ -76,7 +76,7 @@ export const About: React.FC = React.memo(() => {
               <div className={s.feedback}>
                 <h1 className={s.title}>Обратная связь</h1>
                 <a className={s.link} href="https://github.com/Illarion-Porubin" target="blank">
-                  Больше работ на GitHub
+                  Больше проектов на GitHub
                 </a>
                 <a className={s.link} href="mailto:lars.mywork@gmail.com&body=Привет!?subject=Хочу с вами сотрудничать">
                   Пиши мне на Google почту <span>lars.mywork@gmail.com</span>

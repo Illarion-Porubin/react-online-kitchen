@@ -74,6 +74,7 @@ export const Header: React.FC = () => {
             <MobileMenu
               menuList={menuList}
               active={active}
+              setActive={setActive}
               clasName={s.mobMenu}
               favoriteCount={favoriteData.favoriteList.length}
             />

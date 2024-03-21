@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 interface Props {
   menuList: { value: string; link: string }[];
   active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>,
   clasName?: string;
   favoriteCount: number;
 }
@@ -14,7 +15,10 @@ export const MobileMenu: React.FC<Props> = ({
   active,
   clasName,
   favoriteCount,
+  setActive,
 }) => {
+
+
   return (
     <div
       className={
@@ -24,7 +28,7 @@ export const MobileMenu: React.FC<Props> = ({
       }
       style={{ zIndex: active ? 10 : 9 }}
     >
-      <nav className={s.menu}>
+      <nav className={s.menu} onClick={() => setActive(!active)}>
         <ul className={s.list}>
           {menuList.map((item, id: number) => (
             <li className={s.item} key={id}>

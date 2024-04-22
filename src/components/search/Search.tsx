@@ -1,6 +1,8 @@
 import React from "react";
 import s from "./Search.module.scss";
 import { useDebounce } from "../../hooks/useDebounce";
+import { useCustomSelector } from "../../hooks/store";
+import { selectRecipeData } from "../../redux/selectors";
 
 interface Props {
   mainColor: "white" | "black";
@@ -10,11 +12,16 @@ interface Props {
 
 export const Search: React.FC<Props> = React.memo(({mainColor, setSearch, className}) => {
   const [text, setText] = React.useState<string>('');
+  const data = useCustomSelector(selectRecipeData);
   const debounce = useDebounce(text, 400);
   
   React.useEffect(() => {
-    setSearch(debounce)
-  },[debounce, setSearch])
+    if(debounce) {
+      setSearch(debounce)
+    } else if (!data.recipeList.length){
+      setSearch("s")
+    }
+  },[data.recipeList.length, debounce, setSearch])
 
   return (
     <div className={`${s.mainSearch} ${className}`}>

@@ -13,7 +13,7 @@ import { Error } from "./pages/eroor/Eroor";
 import { RecipeInfo } from "./pages/recipeInfo/RecipeInfo";
 import { About } from "./pages/about/About";
 import { Header } from "./components/header/Header";
-
+ 
 
 function App() {
   return (

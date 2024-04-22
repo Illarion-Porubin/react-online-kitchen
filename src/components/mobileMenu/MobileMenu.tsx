@@ -21,11 +21,7 @@ export const MobileMenu: React.FC<Props> = ({
 
   return (
     <div
-      className={
-        active
-          ? `${s.mainClasName} ${s.active} ${clasName} `
-          : `${s.mainClasName} ${clasName}`
-      }
+      className={ active ? `${s.mainClasName} ${s.active} ${clasName} ` : `${s.mainClasName} ${clasName}`}
       style={{ zIndex: active ? 10 : 9 }}
     >
       <nav className={s.menu} onClick={() => setActive(!active)}>
